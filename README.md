@@ -5,6 +5,26 @@
 - 220629</br>
 https://www.acmicpc.net/problem/14582</br>
 
+- 220630</br>
+https://www.acmicpc.net/problem/1920</br>
+** 이진탐색을 이용한 문제
+```python
+def bs(start, end, target):
+    while start <= end:
+        # 가운데를 기준으로 target 검색
+        mid = (start+end)//2
+        if A[mid] == target: 
+            return 1
+        #찾으려는 값이 오른쪽에 존재
+        if A[mid] < target:
+            start = mid + 1
+        #찾으려는 값이 왼쪽에 존재 
+        elif A[mid] > target:
+            end = mid - 1
+    #못찾는 경우
+    return 0
+```
+
 ### 문제
 
 - 220111 </br>
