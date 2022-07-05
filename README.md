@@ -29,6 +29,9 @@ def bs(start, end, target):
 https://www.acmicpc.net/problem/9095</br>
 ** DP
 
+https://www.acmicpc.net/problem/9012</br>
+** Stack
+
 
 ### 문제
 
