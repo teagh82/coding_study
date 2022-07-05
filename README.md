@@ -24,6 +24,11 @@ def bs(start, end, target):
     #못찾는 경우
     return 0
 ```
+</br>
+- 220705</br>
+https://www.acmicpc.net/problem/9095</br>
+** DP
+
 
 ### 문제
 
