@@ -1,0 +1,30 @@
+def solution(genres, plays):
+    answer = []
+    
+    genres_set = set(genres)
+    play_sum = dict(zip(genres_set, [0 for i in range(len(genres_set))]))
+    
+    for idx, i in enumerate(genres):
+        play_sum[i] += plays[idx]
+    
+    albums = [[0 for i in range(4)] for _ in genres]
+    for idx, i in enumerate(genres):
+        albums[idx][0] = play_sum[i]    # 장르별 재생 합
+        albums[idx][1] = plays[idx]     # 재생 수
+        albums[idx][2] = idx            # 고유번호
+        albums[idx][3] = genres[idx]    # 장르
+    
+            
+    albums.sort(key = lambda x:(x[0], x[1], -x[2]), reverse = True)
+    
+    tmp_gen = ""
+    tmp_cnt = 0
+    for i in albums:
+        if tmp_gen != i[3]:
+            tmp_cnt = 0
+            tmp_gen = i[3]
+        if tmp_cnt < 2:
+            answer.append(i[2])
+            tmp_cnt += 1
+        
+    return answer

@@ -1,0 +1,28 @@
+def solution(genres, plays):
+    answer = []
+    play_sum = dict()
+    play_genre = dict()
+    genres_set = set(genres)
+    
+    for i in genres_set:
+        play_sum[i] = 0
+        play_genre[i] = []
+
+    for idx,i in enumerate(genres):
+        play_sum[i] += plays[idx]
+        play_genre[i].append([plays[idx], idx])
+        
+
+    album = [[0 for i in range(2)] for _ in genres_set]
+    for idx, i in enumerate(genres_set):
+        album[idx][0] = play_sum[i]
+        album[idx][1] = play_genre[i]
+    
+    album.sort(key = lambda x: x[0],  reverse = True)
+    for i in album:
+        i[1].sort(key = lambda x:-x[0])
+
+    for i in album:
+        for j in i[1][:2]:
+            answer.append(j[1])
+    return answer
