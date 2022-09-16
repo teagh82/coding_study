@@ -19,6 +19,17 @@ albums.sort(key = lambda x:(x[0], x[1], -x[2]), reverse = True)
 ### sorted도 가능
 sorted(d[g],key= lambda x: (x[0], -x[1]), reverse = True)
 
+### 정렬은 시간초과때문에 단순하게 풀면 안됨 고려해야함
+### 그럴 때 sort(key)로 커스텀해서 정렬하면 속도 빠름
+numbers_str.sort(key = functools.cmp_to_key(lambda x,y: int(x+y) - int(y+x)), reverse = True)
+# cmp_to_key()안의 값이 0보다 크도록 정렬
+# 위의 예제는 x+y가 더 크면 그대로 x,y 순서
+# y+x가 더 크면 y,x 순서
+
+### 리스트 요소의 타입 변경하기
+list(map(str, list_name))
+list(map(int, list_name))
+
 ### zip을 쓰면 두개의 리스트를 합칠 수 있음 
 ### 기본은 튜플로 합쳐짐
 numbers = [1, 2, 3]
@@ -75,3 +86,31 @@ list(zip( *arr[::-1] ))
 [4 5 6]      ->      [4 5 6]      ->      [8 5 2]
 [7 8 9]              [1 2 3]              [9 6 3]
 # *arr               *arr[::-1]         zip(*arr[::-1])
+
+
+### 수학
+import math
+math.ceil(3.22) # 올림
+math.floor(3.2) # 내림
+math.trunc(3.22) # 반올림
+
+### 배열의 요소 개수 세서 딕셔너리로 만들기
+import collections
+l = [1,1,2,2,3]
+dict(collections.Counter(l))
+
+
+### 덱
+# 덱을 사용하면 효율이 좋음
+from collections import deque
+d = deque([1,2,3])
+d.popleft()
+d.append
+deque.append(item)# item을 데크의 오른쪽 끝에 삽입한다.
+deque.appendleft(item)# item을 데크의 왼쪽 끝에 삽입한다.
+deque.pop()# 데크의 오른쪽 끝 엘리먼트를 가져오는 동시에 데크에서 삭제한다.
+deque.popleft()# 데크의 왼쪽 끝 엘리먼트를 가져오는 동시에 데크에서 삭제한다.
+deque.extend(array)# 주어진 배열(array)을 순환하면서 데크의 오른쪽에 추가한다.
+deque.extendleft(array)# 주어진 배열(array)을 순환하면서 데크의 왼쪽에 추가한다.
+deque.remove(item)# item을 데크에서 찾아 삭제한다.
+deque.rotate(num)# 데크를 num만큼 회전한다(양수면 오른쪽, 음수면 왼쪽).
