@@ -1,3 +1,13 @@
+### 소수
+def isPrime(num):
+    if num == 0 or num == 1:
+        return False
+    
+    for i in range(2, num//2+1):
+        if num%i == 0:
+            return False
+    return True
+
 ### 이차원 배열 컴프리헨션
 albums = [[0 for i in range(4)] for _ in genres]
 '''
